@@ -25,7 +25,7 @@ function Cart(props) {
                 {itemList}
             </ul>
             <div>
-                {total}
+                <h2>The current total: {total}</h2>
             </div>
         </div >
     );
