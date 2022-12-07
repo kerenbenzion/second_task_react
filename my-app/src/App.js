@@ -33,7 +33,7 @@ function App() {
           <ExpenseList addToCart={addToCart} />
         } />
         <Route path="/Cart" element=
-          {<Cart items={cart}>
+          {<Cart items={cart} removeFromCart={removeFromCart}>
           </Cart>} />
       </Routes>
     </Router>
@@ -43,21 +43,27 @@ function App() {
   function addToCart(item) {
     setCart([...cart, item]);
   }
+  function removeFromCart(item) {
+    let hardCopy = [...cart];
+    hardCopy = hardCopy.filter((cartItem) => cartItem.title !== item.title);
+    setCart(hardCopy);
+  }
 
 }
 
 
 export default App;
 
-
 function ExpenseList(props) {
-  const { addToCart } = { ...props }
+  const { addToCart, removeFromCart } = { ...props }
   let itemList = expense.map((item, index) => {
     return <li className="listitem" key={index}><ExpenseItem
       title={expense[index].title}
       amount={expense[index].amount}
       url={expense[index].url}
       addToCart={addToCart}
+      removeFromCart={removeFromCart}
+      displaytrash={"None"}
     ></ExpenseItem></li>
   })
 
