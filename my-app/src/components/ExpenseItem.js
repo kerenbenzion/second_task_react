@@ -9,7 +9,7 @@ function ExpenseItem(props) {
             <div><button onClick={() => addToCart(itemJson)}><img src={props.url} alt="" width="100" height="100" /></button></div>
             <div>
                 <div className="expense-item__title"> {props.title}</div>
-                <div className="expense-item__price"> {props.amount}</div>
+                <div className="expense-item__price"> {props.amount}$</div>
             </div>
         </div>
 

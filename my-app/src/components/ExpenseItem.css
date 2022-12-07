@@ -1,6 +1,6 @@
 
 .header_shop{
-    color: purple;
+    color: black;
     font-size: 40px;
 
 }
@@ -12,7 +12,7 @@
     margin: 1.5rem 0;
     margin-right: 2rem;
     border-radius: 12px;
-    background-color: #c3afcf;
+    background-color:#eee;
 }
 
 .expense-item__title {
@@ -41,7 +41,7 @@
     font-size: 1rem;
     font-weight: bold;
     color: black;
-    background-color: #e7d9ed;
+    background-color:darkgrey;
     border: 1px solid black;
     padding: 0.5rem;
     border-radius: 12px;
