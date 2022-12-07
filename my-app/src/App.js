@@ -7,15 +7,16 @@ import Cart from './components/Cart';
 import { useState } from 'react';
 
 const expense = [
-  { title: 'Iphone', amount: '3000$', url: 'https://img.ksp.co.il/item/226976/b_1.jpg?v=5' },
-  { title: 'Galaxy', amount: '1000$', url: 'https://ksp.co.il/shop/items/512/185108.jpg?v=666666' },
-  { title: 'Pixel', amount: '2000$', url: 'https://superpharmstorage.blob.core.windows.net/hybris/products/desktop/medium/193575022666.jpg' },
-  { title: 'Huawei', amount: '1400$', url: 'https://shop-cdn.huawei.com/my/pms/product/6901443378746/428_428_CBDBF02AEEA96C7CC22788965BD60E200D86A508892D3339mp.png' },
+  { title: 'Iphone', amount: 3000, url: 'https://img.ksp.co.il/item/226976/b_1.jpg?v=5' },
+  { title: 'Galaxy', amount: 1000, url: 'https://ksp.co.il/shop/items/512/185108.jpg?v=666666' },
+  { title: 'Pixel', amount: 2000, url: 'https://superpharmstorage.blob.core.windows.net/hybris/products/desktop/medium/193575022666.jpg' },
+  { title: 'Huawei', amount: 1400, url: 'https://shop-cdn.huawei.com/my/pms/product/6901443378746/428_428_CBDBF02AEEA96C7CC22788965BD60E200D86A508892D3339mp.png' },
 
 ];
 function App() {
 
   const [cart, setCart] = useState([]);
+  const [total,setTotal] = useState(0);
   return (
     <Router>
       <div>
@@ -33,7 +34,7 @@ function App() {
           <ExpenseList addToCart={addToCart} />
         } />
         <Route path="/Cart" element=
-          {<Cart items={cart} removeFromCart={removeFromCart}>
+          {<Cart items={cart} removeFromCart={removeFromCart} total={total}>
           </Cart>} />
       </Routes>
     </Router>
@@ -41,11 +42,13 @@ function App() {
   );
 
   function addToCart(item) {
+    setTotal(total+item.amount);
     setCart([...cart, item]);
   }
   function removeFromCart(item) {
     let hardCopy = [...cart];
     hardCopy = hardCopy.filter((cartItem) => cartItem.title !== item.title);
+    setTotal(total-item.amount);
     setCart(hardCopy);
   }
 

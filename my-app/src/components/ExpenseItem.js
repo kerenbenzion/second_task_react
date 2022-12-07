@@ -3,7 +3,6 @@ import './ExpenseItem.css'
 
 function ExpenseItem(props) {
     const addToCart = props.addToCart
-    const removeFromCart = props.removeFromCart
     const itemJson = { "title": props.title, "amount": props.amount, "url": props.url }
     return (
         <div className='expense-item'>
