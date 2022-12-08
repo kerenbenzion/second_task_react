@@ -2,10 +2,9 @@
 
 import './App.css'
 import ExpenseItem from "./components/ExpenseItem";
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom';
 import Cart from './components/Cart';
 import { useState } from 'react';
-
 const expense = [
   { title: 'Iphone', amount: 3000, url: 'https://img.ksp.co.il/item/226976/b_1.jpg?v=5' },
   { title: 'Galaxy', amount: 1000, url: 'https://ksp.co.il/shop/items/512/185108.jpg?v=666666' },
@@ -14,21 +13,20 @@ const expense = [
 
 ];
 function App() {
-
   const [cart, setCart] = useState([]);
   const [total,setTotal] = useState(0);
   return (
+    <div>
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
+    <ul id="Nav_menu">
+
+          <li className='navlink'>
+            <NavLink className="Nav_link" to="/">Home</NavLink>
           </li>
-          <li>
-            <Link to="/cart">Cart</Link>
+          <li className='navlink'>
+            <NavLink className="Nav_link" to="/cart">Cart</NavLink>
           </li>
         </ul>
-      </div>
       <Routes>
         <Route path="/" element={
           <ExpenseList addToCart={addToCart} />
@@ -38,7 +36,7 @@ function App() {
           </Cart>} />
       </Routes>
     </Router>
-
+    </div>
   );
 
   function addToCart(item) {
