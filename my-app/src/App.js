@@ -19,14 +19,13 @@ function App() {
     <div>
     <Router>
     <ul id="Nav_menu">
-
-          <li className='navlink'>
-            <NavLink className="Nav_link" to="/">Home</NavLink>
-          </li>
-          <li className='navlink'>
-            <NavLink className="Nav_link" to="/cart">Cart</NavLink>
-          </li>
-        </ul>
+      <li className='navlink'>
+        <NavLink className="Nav_link" to="/">Home</NavLink>
+      </li>
+      <li className='navlink'>
+        <NavLink className="Nav_link" to="/cart">Cart</NavLink>
+      </li>
+    </ul>
       <Routes>
         <Route path="/" element={
           <ExpenseList addToCart={addToCart} />
@@ -71,7 +70,7 @@ function ExpenseList(props) {
   return (
     <div className="main">
       <div className="header_shop">
-        <h2>My shop</h2>
+        <div id='header'>My shop</div>
       </div>
       <ul className="list_items">
         {itemList}
