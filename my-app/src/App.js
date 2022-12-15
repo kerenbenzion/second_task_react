@@ -32,7 +32,7 @@ function App() {
             <ExpenseList addToCart={addToCart} />
           } />
           <Route path="/Cart" element=
-            {<Cart items={cart} removeFromCart={removeFromCart} total={total}>
+            {<Cart items={cart} saveOrder={saveOrder} removeFromCart={removeFromCart} total={total}>
             </Cart>} />
         </Routes>
       </Router>
@@ -42,6 +42,24 @@ function App() {
   function addToCart(item) {
     setTotal(total + item.amount);
     setCart([...cart, item]);
+  }
+  function saveOrder(total, itemlist) {
+    let databody = {
+      total: total,
+      products: itemlist
+    }
+    console.log('*************')
+    console.log(databody)
+    console.log('*************')
+    fetch('http://localhost:3001/order/create_order', {
+      method: 'POST',
+      body: JSON.stringify(databody),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(alert('Saved order!'))
+
   }
   function removeFromCart(item) {
     let hardCopy = [...cart];
@@ -78,6 +96,7 @@ function ExpenseList(props) {
       amount={expense[index].price}
       url={expense[index].img}
       addToCart={addToCart}
+      description={expense[index].description}
       removeFromCart={removeFromCart}
     ></ExpenseItem></li>
   })
